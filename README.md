@@ -5,9 +5,15 @@
 
 <b>Latest Updates:</b>
 
-- Known Issues: `FAP Loader` & `Chess`
-- Added [keyboard_layout_file documentation](https://github.com/RogueMaster/flipperzero-firmware-wPlugins/blob/420/documentation/keyboard_layout_file.md) [(By dummy-decoy)](https://github.com/flipperdevices/flipperzero-firmware/pull/1525)
-- Images optimized for space [thanks to CyberFlameGO](https://github.com/CyberFlameGO/flipperzero-firmware/tree/imgbot)
+- Known Issues:`FAP Loader`, `Chess`, `HID Analyzer` & Lock Keyboard option when reading SubGHz
+- OFW: fbt: Fix SCons error if PYTHONPATH set on Windows #1585 (By GMMan)](https://github.com/flipperdevices/flipperzero-firmware/pull/1585)
+- OFW: FuriHal, About, Desktop: show provisioned region #1589 (By skotopes)](https://github.com/flipperdevices/flipperzero-firmware/pull/1589)
+- OFW: hal: rtc: fix for CSS on BOR #1590 (By Hedger)](https://github.com/flipperdevices/flipperzero-firmware/pull/1590)
+- OFW: Fix Null Pointer Dereference errors in IR #1583 (By gsurkov)](https://github.com/flipperdevices/flipperzero-firmware/pull/1583)
+- OFW: IR green LED fix #1591 (By gsurkov)](https://github.com/flipperdevices/flipperzero-firmware/pull/1591)
+- Fix for paint exit code (Thanks gana)
+- SubGHz: Moved setting_user file to setting_user.txt! This makes it changable from IOS app. (By RogueMaster)
+- Fix for HID Analyzer Plugin By [Unleashed/xMasterX](https://github.com/Eng1n33r/flipperzero-firmware)
 
 <table width="100%" border="0" cellspacing="0">
   <tr> <td colspan=2> <h3>This software is for experimental purposes only and is not meant for any illegal activity/purposes. We do not condone illegal activity and strongly encourage keeping transmissions to legal/valid uses allowed by law.</h3> </td> </tr>
@@ -69,7 +75,7 @@ $ ./fbt plugin_dist FIRMWARE_APP_SET=ext_apps
 - Animations: SubGHZ Scanning image with Pikachu [Thanks to Panzer00Z](https://github.com/Panzer00Z/flipperzero-firmware/blob/3a548ea9bb181c9348d8afb427890c411456134e/assets/icons/SubGhz/Scanning_123x52.png)
 - Assets: Includes a NFC Level 50 Link Amiibo
 - Assets: Includes a NFC Rick Roll link
-- Assets: Includes New Dolphin Animations: [Rick Roll, Matrix & Swim animations (By qqMajiKpp)], [Rukamon 2x and Agumon animations (By Syrius)]
+- Assets: Includes New Dolphin Animations: [Matrix & Swim animation (By qqmajikqq)], [Rukamon 2x and Agumon animation (By Syrius)]
 - Assets: Includes sample Music Player tunes
 - Assets: Includes sample SubGHz assets for Crosswalk, Handicap Doors, Sextoys, Tesla Charge Port and Unitree Go1 Robot Dog
 - Assets: Includes Sonic Screw Driver sound for the Wav Player
