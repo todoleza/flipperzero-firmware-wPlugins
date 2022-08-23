@@ -24,16 +24,16 @@ void storage_settings_scene_sd_info_on_enter(void* context) {
             dialog_ex, "Try to reinsert\nor format SD\ncard.", 3, 19, AlignLeft, AlignTop);
         dialog_ex_set_center_button_text(dialog_ex, "Ok");
     } else {
-        const char unit_kb[] = "KB";
-        const char unit_mb[] = "MB";
-        const char unit_gb[] = "GB";
+        char unit_kb[] = "KB";
+        char unit_mb[] = "MB";
+        char unit_gb[] = "GB";
 
-        float sd_total_val = (float)sd_info.kb_total;
+        double sd_total_val = (double)sd_info.kb_total;
         char* sd_total_unit = unit_kb;
-        float sd_free_val = (float)sd_info.kb_free;
+        double sd_free_val = (double)sd_info.kb_free;
         char* sd_free_unit = unit_kb;
 
-        if(sd_total_val  > 1024) {
+        if(sd_total_val > 1024) {
             sd_total_val /= 1024;
             sd_total_unit = unit_mb;
         }
