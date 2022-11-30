@@ -1,49 +1,21 @@
 ### New changes
-* API now 99% compatible with official firmware, that means all apps built on OFW can be used on unleashed!
-* Also extra apps pack was updated, download latest by using link below
-* Archive: Show loading popup on delete
-* Docs -> PR: Fix link to "TOTP (Authenticator) config description" (by @pbek | PR #157)
-* Reorder main menu - Applications now first item, clock moved 2 items up
-* API: Add `value_index` to API symbols
-* API: Furi Region Mocks, fix protocol dict funcs was disabled in API
-* New animation L3_FlipperMustache_128x64 by @Svaarich
-* Fix FlipperCity animation by @Svaarich
-* CI/CD: Builds without custom animations now included in releases
-* SubGHz: Fix magellan display issue
-* SubGHz: Fix wrong error message in history 
-* SubGHz: Add frequencies 434.075, 434.390
-* SubGHz: Frequency analyzer: Add counter, GUI fixes, allow Ok button - When signal is present (when frequency window shows black background)
-* SubGHz: Frequency analyzer: move -+ in freq analyzer, swap up & down button
-* SubGHz Remote: Cleanup code in unirf, fix issue #153
-* Plugins: Remove `srand` calls
-* Plugins: Fix DHT Monitor icon
-* Plugins: RFID Fuzzer - Fix random crashes and improve stability
-* Plugins: RFID Fuzzer - allow holding left right to change delay faster (hold TD button to add +10 or -10 to time delay)
-* Plugins: Morse code cleanup text by pressing back
-* Plugins: TOTP Update - "BadUSB" type key into pc mode [(by akopachov)](https://github.com/akopachov/flipper-zero_authenticator)
-* Plugins: Update i2c Tools [(by NaejEL)](https://github.com/NaejEL/flipperzero-i2ctools)
-* Plugins -> PR: Barcode generator: refactoring, ux improvements, implement EAN-8. (by @msvsergey | PR #154)
-* Plugins -> PR: Fix HC-SR04 plugin naming (by @krolchonok | PR #161)
-* Plugins: Added BH1750 - Lightmeter [(by oleksiikutuzov)](https://github.com/oleksiikutuzov/flipperzero-lightmeter)
-* Plugins: Added iButton Fuzzer [(by xMasterX)](https://github.com/xMasterX/ibutton-fuzzer)
-* OFW: BadUSB and Archive fixes
-* OFW: iButton: Fix header "Saved!" message stays on other screens + proper popups reset
-* OFW: Bug fixes and improvements: Furi, Input, CLI
-* OFW: SubGhz: properly handle storage loss 
-* OFW: NFC - Force card types in extra actions
-* OFW: (docs): bad path for furi core
-* OFW: RPC: increase stack size, fix stack overflow 
-* OFW: fbt: 'target' field for apps; lib debugging support 
-* OFW: NFC: fix crash on MFC read
-* OFW: Furi: show thread allocation balance for child threads
-* OFW: Add Acurite 609TXC protocol to weather station
-* OFW: DAP-Link: show error if usb is locked
-* OFW: fbt: compile_db fixes
-* OFW: Infrared: add Kaseikyo IR protocol
-* OFW: WS: fix show negative temperature
-* OFW: fbt: fix for launch_app
-* OFW: Code cleanup: srand, PVS warnings
-* OFW: fbt: fixes for ufbt pt3 
+* Extra [apps pack](https://download-directory.github.io/?url=https://github.com/xMasterX/unleashed-extra-pack/tree/main/apps) update required! Please download using link below, API version changed to 8.x (details below)
+* SubGHz: Fix counter can go higher than 16bits in protocols - Keeloq, SL, Came Atomo, Nice Flor S
+* SubGHz -> Plugin: WS - Add protocol Auriol HG0601A (by @LY2NEO) [(Details)](https://github.com/DarkFlippers/unleashed-firmware/issues/184)
+* NFC -> PR: Assets - mf classic dict update - Possible keys for Omsk transport cards (by @vadrozh | PR #181)
+* BadUSB -> PR: Keyboard layouts: Slovenian (si) / Croatian (hr), Bosnian (ba) (Latin, Bosnia and Herzegovina) (by @StellarStoic | PR #187)
+* Plugins: Update Temperature Sensor Plugin - HTU2xD, SHT2x, SI702x, SI700x, SI701x, AM2320 [(by Mywk)](https://github.com/Mywk/FlipperTemperatureSensor)
+* Plugins: Update HEX Viewer [(by QtRoS)](https://github.com/QtRoS/flipper-zero-hex-viewer)
+* OFW: SubGhz: fix RAW "Send never ends
+* OFW: Allow "Detect reader" for unsaved card 
+* OFW: Blocking USB driver API 
+* OFW: Unified Info API, App Error, Data Xchange (breaking change in API, API version was bumped to 8.x - OFW)
+* OFW: Improve file name filtering
+* OFW: SubGhz: fix duration pricenton protocol
+* OFW: Gui: better navigation in file browser dialog
+* OFW: Nfc: NTAG password auto capture (and other password-related changes) 
+* OFW: NFC: Accept non-parsed apps in Mifare DESFire.
+* OFW: NFC: Fix MIFARE DESfire info action to open app menu
 
 #### [🎲 Download latest extra apps pack](https://download-directory.github.io/?url=https://github.com/xMasterX/unleashed-extra-pack/tree/main/apps)
 
