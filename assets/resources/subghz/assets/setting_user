@@ -1,12 +1,11 @@
 # to use manual settings and prevent them from being deleted on upgrade, rename *_user.example files to *_user
 Filetype: Flipper SubGhz Setting File
 Version: 1
-
-# Add All Standard frequencies
-Add_standard_frequencies: false
+# Add Standard frequencies for your region
+#Add_standard_frequencies: true
 
 # Default Frequency: used as default for "Read" and "Read Raw"
-Default_frequency: 433920000
+#Default_frequency: 433920000
 
 # Frequencies used for "Read", "Read Raw" and "Frequency Analyzer" - they added after default ones if enabled in Add_standard_frequencies
 Frequency: 300000000
@@ -70,7 +69,7 @@ Hopper_frequency: 433920000
 Hopper_frequency: 434420000
 Hopper_frequency: 868350000
 
-# Custom preset examples
+# Custom preset
 # format for CC1101 "Custom_preset_data:" XX YY XX YY .. 00 00 ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ, where: XX-register, YY - register data, 00 00 - end load register, ZZ - 8 byte Pa table register
 
 #Custom_preset_name: AM_1
