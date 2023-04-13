@@ -6,13 +6,14 @@ enum SubGhzSettingIndex {
     SubGhzSettingIndexHopping,
     SubGhzSettingIndexModulation,
     SubGhzSettingIndexBinRAW,
+    SubGhzSettingIndexIgnoreStarline,
     SubGhzSettingIndexSound,
     SubGhzSettingIndexLock,
-    SubGhzSettingIndexRAWThesholdRSSI,
+    SubGhzSettingIndexRAWThresholdRSSI,
 };
 
 #define RAW_THRESHOLD_RSSI_COUNT 11
-const char* const raw_theshold_rssi_text[RAW_THRESHOLD_RSSI_COUNT] = {
+const char* const raw_threshold_rssi_text[RAW_THRESHOLD_RSSI_COUNT] = {
     "-----",
     "-85.0",
     "-80.0",
@@ -26,7 +27,7 @@ const char* const raw_theshold_rssi_text[RAW_THRESHOLD_RSSI_COUNT] = {
     "-40.0",
 
 };
-const float raw_theshold_rssi_value[RAW_THRESHOLD_RSSI_COUNT] = {
+const float raw_threshold_rssi_value[RAW_THRESHOLD_RSSI_COUNT] = {
     -90.0f,
     -85.0f,
     -80.0f,
@@ -47,7 +48,7 @@ const char* const hopping_text[HOPPING_COUNT] = {
 };
 const uint32_t hopping_value[HOPPING_COUNT] = {
     SubGhzHopperStateOFF,
-    SubGhzHopperStateRunnig,
+    SubGhzHopperStateRunning,
 };
 
 #define SPEAKER_COUNT 2
@@ -67,6 +68,15 @@ const char* const bin_raw_text[BIN_RAW_COUNT] = {
 const uint32_t bin_raw_value[BIN_RAW_COUNT] = {
     SubGhzProtocolFlag_Decodable,
     SubGhzProtocolFlag_Decodable | SubGhzProtocolFlag_BinRAW,
+};
+#define STAR_LINE_COUNT 2
+const char* const star_line_text[STAR_LINE_COUNT] = {
+    "OFF",
+    "ON",
+};
+const uint32_t star_line_value[STAR_LINE_COUNT] = {
+    SubGhzStarLineIgnoreDisable,
+    SubGhzStarLineIgnoreEnable,
 };
 
 uint8_t subghz_scene_receiver_config_next_frequency(const uint32_t value, void* context) {
@@ -213,8 +223,16 @@ static void subghz_scene_receiver_config_set_raw_threshold_rssi(VariableItem* it
     SubGhz* subghz = variable_item_get_context(item);
     uint8_t index = variable_item_get_current_value_index(item);
 
-    variable_item_set_current_value_text(item, raw_theshold_rssi_text[index]);
-    subghz->txrx->raw_threshold_rssi = raw_theshold_rssi_value[index];
+    variable_item_set_current_value_text(item, raw_threshold_rssi_text[index]);
+    subghz->txrx->raw_threshold_rssi = raw_threshold_rssi_value[index];
+}
+
+static void subghz_scene_receiver_config_set_starline(VariableItem* item) {
+    SubGhz* subghz = variable_item_get_context(item);
+    uint8_t index = variable_item_get_current_value_index(item);
+
+    variable_item_set_current_value_text(item, star_line_text[index]);
+    subghz->txrx->starline_state = star_line_value[index];
 }
 
 static void subghz_scene_receiver_config_var_list_enter_callback(void* context, uint32_t index) {
@@ -291,6 +309,21 @@ void subghz_scene_receiver_config_on_enter(void* context) {
         variable_item_set_current_value_text(item, bin_raw_text[value_index]);
     }
 
+    if(scene_manager_get_scene_state(subghz->scene_manager, SubGhzSceneReadRAW) !=
+       SubGhzCustomEventManagerSet) {
+        item = variable_item_list_add(
+            subghz->variable_item_list,
+            "Ignore StarLine:",
+            STAR_LINE_COUNT,
+            subghz_scene_receiver_config_set_starline,
+            subghz);
+
+        value_index =
+            value_index_uint32(subghz->txrx->starline_state, star_line_value, STAR_LINE_COUNT);
+        variable_item_set_current_value_index(item, value_index);
+        variable_item_set_current_value_text(item, star_line_text[value_index]);
+    }
+
     // Enable speaker, will send all incoming noises and signals to speaker so you can listen how your remote sounds like :)
     item = variable_item_list_add(
         subghz->variable_item_list,
@@ -320,9 +353,9 @@ void subghz_scene_receiver_config_on_enter(void* context) {
             subghz_scene_receiver_config_set_raw_threshold_rssi,
             subghz);
         value_index = value_index_float(
-            subghz->txrx->raw_threshold_rssi, raw_theshold_rssi_value, RAW_THRESHOLD_RSSI_COUNT);
+            subghz->txrx->raw_threshold_rssi, raw_threshold_rssi_value, RAW_THRESHOLD_RSSI_COUNT);
         variable_item_set_current_value_index(item, value_index);
-        variable_item_set_current_value_text(item, raw_theshold_rssi_text[value_index]);
+        variable_item_set_current_value_text(item, raw_threshold_rssi_text[value_index]);
     }
     view_dispatcher_switch_to_view(subghz->view_dispatcher, SubGhzViewIdVariableItemList);
 }

@@ -65,6 +65,22 @@ typedef struct {
     uint8_t descender;
 } CanvasFontParameters;
 
+/** Icon flip */
+typedef enum {
+    IconFlipNone,
+    IconFlipHorizontal,
+    IconFlipVertical,
+    IconFlipBoth,
+} IconFlip;
+
+/** Icon rotation */
+typedef enum {
+    IconRotation0,
+    IconRotation90,
+    IconRotation180,
+    IconRotation270,
+} IconRotation;
+
 /** Canvas anonymous structure */
 typedef struct Canvas Canvas;
 
@@ -218,6 +234,22 @@ void canvas_draw_bitmap(
     uint8_t height,
     const uint8_t* compressed_bitmap_data);
 
+/** Draw icon at position defined by x,y with rotation and flip.
+ *
+ * @param      canvas   Canvas instance
+ * @param      x        x coordinate
+ * @param      y        y coordinate
+ * @param      icon     Icon instance
+ * @param      flip     IconFlip
+ * @param      rotation IconRotation
+ */
+void canvas_draw_icon_ex(
+    Canvas* canvas,
+    uint8_t x,
+    uint8_t y,
+    const Icon* icon,
+    IconRotation rotation);
+
 /** Draw animation at position defined by x,y.
  *
  * @param      canvas          Canvas instance
@@ -363,7 +395,7 @@ void canvas_draw_rframe(
     uint8_t height,
     uint8_t radius);
 
-/** Draw rounded-corner box of width, height at x,y, with round value raduis
+/** Draw rounded-corner box of width, height at x,y, with round value radius
  *
  * @param      canvas  Canvas instance
  * @param      x       x coordinate
